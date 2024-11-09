@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "41465113749",
+    "project_id": "ikrilii",
+    "storage_bucket": "ikrilii.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41465113749:android:0fd44c1994c2849760ff9c",
+        "android_client_info": {
+          "package_name": "com.example.ikrili"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8MoRvh7699F-2SFYYrjmtPJV0a16Ybr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
