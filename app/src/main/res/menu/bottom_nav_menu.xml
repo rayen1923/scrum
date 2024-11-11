@@ -21,4 +21,3 @@
         android:icon="@drawable/ic_notification"
         android:title="Notification" />
 </menu>
-

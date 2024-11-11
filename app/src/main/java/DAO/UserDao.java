@@ -2,6 +2,7 @@ package DAO;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -34,8 +35,13 @@ public class UserDao implements IUserDao {
                 if (dataSnapshot.exists()) {
                     User user = dataSnapshot.getValue(User.class);
                     if (user != null && user.getPassword().equals(password)) {
+                        SharedPreferences sharedPreferences = context.getSharedPreferences("UserSession", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("isLoggedIn", true);
+                        editor.putString("username", username);
+                        editor.putInt("id", user.getUser_id());
+                        editor.apply();
                         Intent intent = new Intent(context, MainActivity.class);
-                        intent.putExtra("id", user.getUser_id());
                         context.startActivity(intent);
                     } else {
                         Toast.makeText(context, "Incorrect password!", Toast.LENGTH_SHORT).show();
@@ -79,10 +85,13 @@ public class UserDao implements IUserDao {
                 usersRef.child(firstName + " " + lastName).setValue(user)
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
-                                lastUserIdRef.setValue(newUserId);
-
+                                SharedPreferences sharedPreferences = context.getSharedPreferences("UserSession", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putBoolean("isLoggedIn", true);
+                                editor.putString("username", firstName + " " + lastName);
+                                editor.putInt("id", newUserId);
+                                editor.apply();
                                 Intent intent = new Intent(context, MainActivity.class);
-                                intent.putExtra("id", user.getUser_id());
                                 context.startActivity(intent);
                             } else {
                                 Toast.makeText(context, "Registration failed: " + task.getException(), Toast.LENGTH_SHORT).show();
