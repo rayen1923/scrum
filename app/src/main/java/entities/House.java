@@ -6,23 +6,21 @@ public class House {
     private int House_id;
     private String Adress;
     private String Description;
-    private ArrayList<String> Images;
     private int Nb_place;
     private int Nb_place_oc;
     private float Place_prix;
     private int Owner_id;
     private ArrayList<Integer> Students;
 
-    public House(int id, String adress, String des, ArrayList<String> images, int nbp, int nbpo, float prix, int owner_id) {
+    public House(int id, String adress, String des, int nbp,float prix, int owner_id) {
         House_id = id;
         Adress = adress;
         Description = des;
-        Images = images;
         Nb_place = nbp;
-        Nb_place_oc = nbpo;
+        Nb_place_oc = 0;
         Place_prix = prix;
         Owner_id = owner_id;
-        Students = new ArrayList<Integer>();
+        Students = new ArrayList<>();
     }
 
     public String getAdress() {
@@ -57,14 +55,6 @@ public class House {
         Nb_place = nb_place;
     }
 
-    public ArrayList<String> getImages() {
-        return Images;
-    }
-
-    public void setImages(ArrayList<String> images) {
-        Images = images;
-    }
-
     public int getHouse_id() {
         return House_id;
     }
@@ -97,4 +87,3 @@ public class House {
         Students = students;
     }
 }
-
